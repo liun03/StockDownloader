@@ -8,7 +8,9 @@ import (
 )
 
 func main() {
-	err := Downloader("/gotmp/", "stock.csv", "https://www.twse.com.tw/exchangeReport/MI_INDEX?response=csv&date=20200914&type=ALLBUT0999")
+	inputDate := "20200911"
+	url := fmt.Sprintf("https://www.twse.com.tw/exchangeReport/MI_INDEX?response=csv&date=%s&type=ALLBUT0999", inputDate)
+	err := Downloader("/gotmp/", "stock.csv", url)
 	if err != nil {
 		fmt.Println(err)
 	}
