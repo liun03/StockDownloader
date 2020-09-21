@@ -5,7 +5,10 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"time"
 )
+
+var httpClient = &http.Client{Timeout: 10 * time.Second}
 
 func main() {
 	inputDate := "20200911"
@@ -24,7 +27,7 @@ func Downloader(savedPath string, fileName string, url string) error {
 	if err != nil {
 		return err
 	}
-	resp, err := http.Get(url)
+	resp, err := httpClient.Get(url)
 	if err != nil {
 		return err
 	}
